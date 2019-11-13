@@ -15,6 +15,13 @@ class FavouriteCity extends StatefulWidget {
 class _FavouriteCityState extends State<FavouriteCity> {
   var nameCity = "";
 
+  void setCity(input) {
+    setState(() {
+      nameCity = input;
+      debugPrint("State set");
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     debugPrint("widget is created");
@@ -26,14 +33,11 @@ class _FavouriteCityState extends State<FavouriteCity> {
         body: Container(
           margin: EdgeInsets.all(30.0),
           child: Column(children: <Widget>[
-            TextField(
-              onSubmitted: (String input) {
-                setState(() {
-                  nameCity = input;
-                  debugPrint("State set");
-                });
-              },
-            ),
+            TextField(onSubmitted: (String input) {
+              setCity(input);
+            }, onChanged: (String input) {
+              setCity(input);
+            }),
             Padding(
               padding: EdgeInsets.all(20.0),
               child: Text(
